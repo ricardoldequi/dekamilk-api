@@ -5,24 +5,24 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version:  3.2.4
+* Rails version: 7.1.3.2
 
-* System dependencies
+* Database:
+->postgresql:15.2-2
+-> creation: view foldes dekamilk-api/scripts/26-04-2024-create.sql
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
--- # bundle install para instalar as gems do projeto
--- ## rails s para iniciar a API
--- rails g scaffold <model> <propriedades>pra gerar os arquivos do model automaticamente
--- quando alterado script do banco, lembrar de dar um dump nos schemas para ajustar com o que se tem salvo # rails db:schema:dump 
+* Instalar as gems do projeto
+ ```
+ bundle install
+ ```
+* Iniciar a API 
+```
+rails s
+```
+```
+ rails g scaffold <model> <propriedades> #pra gerar os arquivos do model automaticamente
+ ```
+```
+rails db:schema:dump #quando alterado script do banco, lembrar de dar um dump nos schemas para ajustar com o que se tem salvo
+```
