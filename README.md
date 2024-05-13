@@ -9,8 +9,8 @@ Things you may want to cover:
 * Rails version: 7.1.3.2
 
 * Database:
-->postgresql:15.2-2
--> creation: view foldes dekamilk-api/scripts/26-04-2024-create.sql
+  - postgresql:15.2-2
+  - creation: view folder dekamilk-api/scripts/26-04-2024-create.sql
 
 * Instalar as gems do projeto
  ```
