@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_010900) do
+ActiveRecord::Schema[7.1].define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "animal", primary_key: "id_animal", id: :serial, force: :cascade do |t|
-    t.integer "id_raca", null: false
+  create_table "animal", primary_key: "animal_id", id: :serial, force: :cascade do |t|
+    t.integer "raca_id", null: false
     t.integer "nr_brinco", null: false
     t.integer "idade"
     t.date "data_nasc"
@@ -32,15 +32,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_010900) do
     t.check_constraint "sexo = ANY (ARRAY['M'::bpchar, 'F'::bpchar])", name: "animal_sexo_check"
   end
 
-  create_table "calendariovacinacao", primary_key: "id_vacinacao", id: :serial, force: :cascade do |t|
-    t.integer "id_animal", null: false
-    t.integer "id_vacina", null: false
+  create_table "calendariovacinacao", primary_key: "vacinacao_id", id: :serial, force: :cascade do |t|
+    t.integer "animal_id", null: false
+    t.integer "vacina_id", null: false
     t.date "data_vacinacao", null: false
     t.integer "tempo_carencia"
     t.date "data_prevista_proxima_vacinacao"
   end
 
-  create_table "cliente", primary_key: "id_cliente", id: :serial, force: :cascade do |t|
+  create_table "cliente", primary_key: "cliente_id", id: :serial, force: :cascade do |t|
     t.string "nome", limit: 60, null: false
     t.string "cpf", limit: 14, null: false
     t.string "cep", limit: 9
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_010900) do
     t.unique_constraint ["cpf"], name: "cliente_cpf_key"
   end
 
-  create_table "fornecedor", primary_key: "id_fornecedor", id: :serial, force: :cascade do |t|
+  create_table "fornecedor", primary_key: "fornecedor_id", id: :serial, force: :cascade do |t|
     t.string "nome", limit: 60, null: false
     t.string "cpf", limit: 14, null: false
     t.string "cep", limit: 10
@@ -72,50 +72,48 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_010900) do
     t.unique_constraint ["cpf"], name: "fornecedor_cpf_key"
   end
 
-  create_table "funcao", primary_key: "id_funcao", id: :serial, force: :cascade do |t|
+  create_table "funcao", primary_key: "funcao_id", id: :serial, force: :cascade do |t|
     t.string "nome", limit: 20, null: false
   end
 
-  create_table "movimento", primary_key: "id_movimento", id: :serial, force: :cascade do |t|
-    t.integer "id_operacao", null: false
+  create_table "movimento", primary_key: "movimento_id", id: :serial, force: :cascade do |t|
+    t.integer "operacao_id", null: false
     t.float "quantidade", null: false
-    t.integer "id_fornecedor", null: false
-    t.integer "id_cliente", null: false
+    t.integer "fornecedor_id", null: false
+    t.integer "cliente_id", null: false
     t.string "descricao", limit: 300, null: false
     t.datetime "data_lancamento", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
   end
 
-  create_table "operacao", primary_key: "id_operacao", id: :serial, force: :cascade do |t|
+  create_table "operacao", primary_key: "operacao_id", id: :serial, force: :cascade do |t|
     t.string "descricao", limit: 300, null: false
     t.string "tipo", limit: 1
     t.check_constraint "tipo = ANY (ARRAY['E'::bpchar, 'S'::bpchar, 'N'::bpchar])", name: "operacao_tipo_check"
   end
 
-  create_table "precounitariolitro", primary_key: "id_preco_unitario", id: :serial, force: :cascade do |t|
+  create_table "precounitariolitro", primary_key: "preco_unitario_id", id: :serial, force: :cascade do |t|
     t.float "valor_unitario", default: 0.0, null: false
     t.date "data_preco", null: false
-    t.integer "id_cliente", null: false
+    t.integer "cliente_id", null: false
   end
 
-  create_table "raca", primary_key: "id_raca", id: :serial, force: :cascade do |t|
+  create_table "raca", primary_key: "raca_id", id: :serial, force: :cascade do |t|
     t.string "nome", limit: 20, null: false
   end
 
-  create_table "usuario", primary_key: "id_usuario", id: :serial, force: :cascade do |t|
+  create_table "usuario", primary_key: "usuario_id", id: :serial, force: :cascade do |t|
     t.string "nome_usuario", limit: 60, null: false
     t.string "senha_usuario", limit: 20, null: false
     t.string "cpf", limit: 14, default: "000.000.000-00", null: false
     t.string "email", limit: 70
-    t.integer "funcao", null: false
+    t.integer "funcao_id", null: false
     t.string "telefone", limit: 15, default: "00 00000-0000"
 
     t.unique_constraint ["cpf"], name: "usuario_cpf_key"
     t.unique_constraint ["nome_usuario"], name: "usuario_nome_usuario_key"
-    t.unique_constraint ["telefone"], name: "usuario_telefone_key"
   end
 
-
-  create_table "vacina", primary_key: "id_vacina", id: :serial, force: :cascade do |t|
+  create_table "vacina", primary_key: "vacina_id", id: :serial, force: :cascade do |t|
     t.string "nome_comercial", null: false
     t.string "nome_doenca"
     t.string "principio_ativo", null: false
@@ -123,11 +121,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_010900) do
     t.string "tipo_aplicacao", null: false
   end
 
-  add_foreign_key "animal", "raca", column: "id_raca", primary_key: "id_raca", name: "fk_id_raca"
-  add_foreign_key "calendariovacinacao", "animal", column: "id_animal", primary_key: "id_animal", name: "fk_id_animal"
-  add_foreign_key "calendariovacinacao", "vacina", column: "id_vacina", primary_key: "id_vacina", name: "fk_id_vacina"
-  add_foreign_key "movimento", "cliente", column: "id_cliente", primary_key: "id_cliente", name: "fk_cliente"
-  add_foreign_key "movimento", "fornecedor", column: "id_fornecedor", primary_key: "id_fornecedor", name: "fk_fornecedor"
-  add_foreign_key "precounitariolitro", "cliente", column: "id_cliente", primary_key: "id_cliente", name: "fk_cliente"
-  add_foreign_key "usuario", "funcao", column: "funcao", primary_key: "id_funcao", name: "fk_funcao"
+  add_foreign_key "animal", "raca", primary_key: "raca_id", name: "fk_raca_id"
+  add_foreign_key "calendariovacinacao", "animal", primary_key: "animal_id", name: "fk_animal_id"
+  add_foreign_key "calendariovacinacao", "vacina", primary_key: "vacina_id", name: "fk_vacina_id"
+  add_foreign_key "movimento", "cliente", primary_key: "cliente_id", name: "fk_cliente_id"
+  add_foreign_key "movimento", "fornecedor", primary_key: "fornecedor_id", name: "fk_fornecedor_id"
+  add_foreign_key "precounitariolitro", "cliente", primary_key: "cliente_id", name: "fk_cliente_id"
+  add_foreign_key "usuario", "funcao", primary_key: "funcao_id", name: "fk_funcao"
 end

@@ -12,7 +12,7 @@ class UsuarioControllerTest < ActionDispatch::IntegrationTest
 
   test "should create usuario" do
     assert_difference("Usuario.count") do
-      post usuario_url, params: { usuario: { cpf: @usuario.cpf, email: @usuario.email, funcao: @usuario.funcao, nome_usuario: @usuario.nome_usuario, senha_usuario: @usuario.senha_usuario, telefone: @usuario.telefone } }, as: :json
+      post usuario_url, params: { usuario: { cpf: @usuario.cpf, email: @usuario.email, funcao: @usuario.funcao_id, nome_usuario: @usuario.nome_usuario, senha_usuario: @usuario.senha_usuario, telefone: @usuario.telefone } }, as: :json
     end
 
     assert_response :created

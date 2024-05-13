@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_funcao: 1
+  nome: MyString
+
+two:
+  id_funcao: 1
+  nome: MyString
