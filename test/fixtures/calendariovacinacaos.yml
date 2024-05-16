@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vacinacao_id: 
+  animal_id: one
+  vacina_id: one
+  data_vacinacao: 2024-05-15
+  tempo_carencia: 1
+  data_prevista_proxima_vacinacao: 2024-05-15
+
+two:
+  vacinacao_id: 
+  animal_id: two
+  vacina_id: two
+  data_vacinacao: 2024-05-15
+  tempo_carencia: 1
+  data_prevista_proxima_vacinacao: 2024-05-15

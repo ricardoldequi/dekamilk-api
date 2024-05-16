@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  animal_id: 
+  raca_id: one
+  nr_brinco: 1
+  idade: 1
+  data_nasc: 2024-05-15
+  apelido: MyString
+  nome_pai: MyString
+  nome_mae: MyString
+  is_inseminada: false
+  is_lactante: false
+  numero_crias: 1
+  peso: 1.5
+  sexo: MyString
+  data_ult_cria: 2024-05-15
+
+two:
+  animal_id: 
+  raca_id: two
+  nr_brinco: 1
+  idade: 1
+  data_nasc: 2024-05-15
+  apelido: MyString
+  nome_pai: MyString
+  nome_mae: MyString
+  is_inseminada: false
+  is_lactante: false
+  numero_crias: 1
+  peso: 1.5
+  sexo: MyString
+  data_ult_cria: 2024-05-15

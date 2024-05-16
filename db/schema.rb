@@ -22,13 +22,12 @@ ActiveRecord::Schema[7.1].define(version: 0) do
     t.string "apelido", limit: 15, null: false
     t.string "nome_pai", limit: 15
     t.string "nome_mae", limit: 15
-    t.boolean "inseminada", null: false
+    t.boolean "is_inseminada", null: false
     t.boolean "is_lactante"
     t.integer "numero_crias"
     t.float "peso"
     t.string "sexo", limit: 1
     t.date "data_ult_cria"
-    t.boolean "is_inseminada"
     t.check_constraint "sexo = ANY (ARRAY['M'::bpchar, 'F'::bpchar])", name: "animal_sexo_check"
   end
 
@@ -126,6 +125,7 @@ ActiveRecord::Schema[7.1].define(version: 0) do
   add_foreign_key "calendariovacinacao", "vacina", primary_key: "vacina_id", name: "fk_vacina_id"
   add_foreign_key "movimento", "cliente", primary_key: "cliente_id", name: "fk_cliente_id"
   add_foreign_key "movimento", "fornecedor", primary_key: "fornecedor_id", name: "fk_fornecedor_id"
+  add_foreign_key "movimento", "operacao", primary_key: "operacao_id", name: "fk_operacao_id"
   add_foreign_key "precounitariolitro", "cliente", primary_key: "cliente_id", name: "fk_cliente_id"
   add_foreign_key "usuario", "funcao", primary_key: "funcao_id", name: "fk_funcao"
 end

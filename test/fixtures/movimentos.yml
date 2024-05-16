@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movimento_id: 
+  operacao_id: one
+  quantidade: 1.5
+  fornecedor_id: one
+  cliente_id: one
+  descricao: MyString
+  data_lancamento: 2024-05-15 22:01:39
+
+two:
+  movimento_id: 
+  operacao_id: two
+  quantidade: 1.5
+  fornecedor_id: two
+  cliente_id: two
+  descricao: MyString
+  data_lancamento: 2024-05-15 22:01:39

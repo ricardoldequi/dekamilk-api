@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  preco_unitario_litro_id: 
+  valor_unitario: 1.5
+  data_preco: 2024-05-15
+  cliente_id: one
+
+two:
+  preco_unitario_litro_id: 
+  valor_unitario: 1.5
+  data_preco: 2024-05-15
+  cliente_id: two
