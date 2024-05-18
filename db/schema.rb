@@ -78,8 +78,8 @@ ActiveRecord::Schema[7.1].define(version: 0) do
   create_table "movimento", primary_key: "movimento_id", id: :serial, force: :cascade do |t|
     t.integer "operacao_id", null: false
     t.float "quantidade", null: false
-    t.integer "fornecedor_id", null: false
-    t.integer "cliente_id", null: false
+    t.integer "fornecedor_id"
+    t.integer "cliente_id"
     t.string "descricao", limit: 300, null: false
     t.datetime "data_lancamento", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
   end
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 0) do
 
   create_table "usuario", primary_key: "usuario_id", id: :serial, force: :cascade do |t|
     t.string "nome_usuario", limit: 60, null: false
-    t.string "senha_usuario", limit: 20, null: false
+    t.string "password_digest", limit: 300, null: false
     t.string "cpf", limit: 14, default: "000.000.000-00", null: false
     t.string "email", limit: 70
     t.integer "funcao_id", null: false
@@ -127,5 +127,5 @@ ActiveRecord::Schema[7.1].define(version: 0) do
   add_foreign_key "movimento", "fornecedor", primary_key: "fornecedor_id", name: "fk_fornecedor_id"
   add_foreign_key "movimento", "operacao", primary_key: "operacao_id", name: "fk_operacao_id"
   add_foreign_key "precounitariolitro", "cliente", primary_key: "cliente_id", name: "fk_cliente_id"
-  add_foreign_key "usuario", "funcao", primary_key: "funcao_id", name: "fk_funcao"
+  add_foreign_key "usuario", "funcao", primary_key: "funcao_id", name: "fk_funcao_id"
 end

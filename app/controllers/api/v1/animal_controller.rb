@@ -1,6 +1,7 @@
 module Api
   module V1
     class AnimalController < ApplicationController
+      before_action :authorize
       before_action :set_animal, only: %i[ show update destroy ]
 
       # GET /animal

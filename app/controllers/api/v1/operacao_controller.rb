@@ -1,6 +1,7 @@
 module Api
   module V1
     class OperacaoController < ApplicationController
+      before_action :authorize
       before_action :set_operacao, only: %i[ show update destroy ]
 
       # GET /operacao

@@ -1,6 +1,7 @@
 module Api
   module V1
     class ClienteController < ApplicationController
+      before_action :authorize
       before_action :set_cliente, only: %i[ show update destroy ]
 
       # GET /cliente

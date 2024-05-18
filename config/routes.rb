@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         resources :movimento
         resources :vacina
         resources :calendariovacinacao
+        post "/login", to: "usuario#login"
 
         # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

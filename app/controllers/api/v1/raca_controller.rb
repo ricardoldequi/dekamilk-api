@@ -1,6 +1,7 @@
 module Api
   module V1
     class RacaController < ApplicationController
+      before_action :authorize
       before_action :set_raca, only: %i[ show update destroy ]
 
       # GET /raca
