@@ -20,8 +20,8 @@ module Api
       def create
         @usuario = Usuario.new(usuario_params)
         if @usuario.save
-          token = encode_token({usuario_id: @usuario.id})
-          render json: {usuario: @usuario, token: token}, status: :created, location: api_v1_usuario_url(@usuario)
+          token = encode_token({ usuario_id: @usuario.id })
+          render json: { usuario: @usuario, token: }, status: :created, location: api_v1_usuario_url(@usuario)
         else
           render json: @usuario.errors, status: :unprocessable_entity
         end
@@ -40,15 +40,15 @@ module Api
       def destroy
         @usuario.destroy!
       end
-      
+
       def login
         @usuario = Usuario.find_by(nome_usuario: params[:nome_usuario])
         if @usuario && @usuario.authenticate(params[:password])
-          token = encode_token({usuario_id: @usuario.id})
-         # puts "Token Gerado: #{token}" 
-          render json: {usuario: @usuario, token: token}, status: :ok
+          token = encode_token({ usuario_id: @usuario.id })
+          # puts "Token Gerado: #{token}"
+          render json: { usuario: @usuario, token: }, status: :ok
         else
-          render json: {error: 'Usuário ou senha inválidos'}, status: :unauthorized
+          render json: { error: 'Usuário ou senha inválidos' }, status: :unauthorized
         end
       end
 
@@ -61,7 +61,6 @@ module Api
         # Only allow a list of trusted parameters through.
         def usuario_params
           params.permit(:nome_usuario, :password, :password_confirmation, :cpf, :email, :funcao_id, :telefone)
-
         end
     end
   end
