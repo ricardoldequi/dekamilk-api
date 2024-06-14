@@ -64,7 +64,7 @@ CREATE TABLE Movimento(
 	data_lancamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT PK_movimento_id PRIMARY KEY (movimento_id),
 	CONSTRAINT FK_cliente_id FOREIGN KEY (cliente_id) REFERENCES Cliente(cliente_id),
-	CONSTRAINT FK_fornecedor_id FOREIGN KEY (fornecedor_id) REFERENCES Fornecedor(fornecedor_id)
+	CONSTRAINT FK_fornecedor_id FOREIGN KEY (fornecedor_id) REFERENCES Fornecedor(fornecedor_id),
 	CONSTRAINT FK_operacao_id FOREIGN KEY (operacao_id) REFERENCES Operacao(operacao_id)
 
 );
@@ -85,15 +85,15 @@ CREATE TABLE Funcao(
 );
 
 CREATE TABLE Usuario (
-	usuario_id SERIAL NOT NULL,
-	nome_usuario VARCHAR(60) NOT NULL UNIQUE,
-	senha_usuario VARCHAR(20) NOT NULL,
-	cpf VARCHAR(14) NOT NULL UNIQUE DEFAULT '000.000.000-00',
+    usuario_id SERIAL NOT NULL,
+    nome_usuario VARCHAR(60) NOT NULL UNIQUE,
+    password_digest VARCHAR(300) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE DEFAULT '000.000.000-00',
     email VARCHAR(70),
-	funcao_id INT NOT NULL,
-	telefone VARCHAR(15) DEFAULT '00 00000-0000',
-	CONSTRAINT PK_usuario_id PRIMARY KEY (usuario_id),
-	CONSTRAINT FK_funcao FOREIGN KEY (funcao_id) REFERENCES Funcao(funcao_id)
+    funcao_id INT NOT NULL,
+    telefone VARCHAR(15) DEFAULT '00 00000-0000',
+    CONSTRAINT PK_usuario_id PRIMARY KEY (usuario_id),
+    CONSTRAINT FK_funcao FOREIGN KEY (funcao_id) REFERENCES Funcao(funcao_id)
 );
 
 CREATE TABLE Raca(

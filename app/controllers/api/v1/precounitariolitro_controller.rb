@@ -1,6 +1,7 @@
 module Api
   module V1
     class PrecounitariolitroController < ApplicationController
+      before_action :authorize
       before_action :set_precounitariolitro, only: %i[ show update destroy ]
 
       # GET /precounitariolitro

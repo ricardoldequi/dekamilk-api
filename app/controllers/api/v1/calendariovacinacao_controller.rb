@@ -1,6 +1,7 @@
 module Api
   module V1
     class CalendariovacinacaoController < ApplicationController
+      before_action :authorize
       before_action :set_calendariovacinacao, only: %i[ show update destroy ]
 
       # GET /calendariovacinacao

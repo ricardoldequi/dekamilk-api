@@ -1,6 +1,7 @@
 module Api
   module V1
     class FuncaoController < ApplicationController
+      before_action :authorize
       before_action :set_funcao, only: %i[ show update destroy ]
 
       # GET /funcao

@@ -1,6 +1,7 @@
 module Api
   module V1
     class VacinaController < ApplicationController
+      before_action :authorize
       before_action :set_vacina, only: %i[ show update destroy ]
 
       # GET /vacina
