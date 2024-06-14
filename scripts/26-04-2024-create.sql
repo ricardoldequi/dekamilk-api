@@ -143,6 +143,21 @@ CREATE TABLE CalendarioVacinacao(
 	CONSTRAINT FK_vacina_id FOREIGN KEY (vacina_id) REFERENCES Vacina(vacina_id)
 );
 
+
+CREATE VIEW Movimento_Operacao_S AS
+SELECT m.*
+FROM Movimento m
+JOIN Operacao o ON m.operacao_id = o.operacao_id
+WHERE o.tipo = 'S';
+
+
+CREATE VIEW Movimento_Operacao_E AS
+SELECT m.*
+FROM Movimento m
+JOIN Operacao o ON m.operacao_id = o.operacao_id
+WHERE o.tipo = 'E';
+
+
 -- incerção de dados primários
 /*
 

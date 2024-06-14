@@ -9,7 +9,14 @@ Rails.application.routes.draw do
         resources :raca
         resources :fornecedor
         resources :precounitariolitro
-        resources :movimento
+        resources :movimento do
+          collection do
+            get 'entrada'
+            get 'saida'
+            get 'todos'
+            get 'relatorio'
+          end
+        end
         resources :vacina
         resources :calendariovacinacao
         post "/login", to: "usuario#login"

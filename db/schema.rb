@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 20_240_602_200_827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -127,5 +127,5 @@ ActiveRecord::Schema[7.1].define(version: 0) do
   add_foreign_key "movimento", "fornecedor", primary_key: "fornecedor_id", name: "fk_fornecedor_id"
   add_foreign_key "movimento", "operacao", primary_key: "operacao_id", name: "fk_operacao_id"
   add_foreign_key "precounitariolitro", "cliente", primary_key: "cliente_id", name: "fk_cliente_id"
-  add_foreign_key "usuario", "funcao", primary_key: "funcao_id", name: "fk_funcao_id"
+  add_foreign_key "usuario", "funcao", primary_key: "funcao_id", name: "fk_funcao"
 end
