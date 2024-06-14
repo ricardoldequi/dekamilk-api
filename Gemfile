@@ -9,8 +9,12 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 #gem "sqlite3", "~> 1.4"
 
 gem 'pg'
+gem 'prawn'
+gem 'prawn-table'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rubocop', require: false
+
+
 
 
 
